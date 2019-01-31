@@ -7,16 +7,6 @@ import random
 from collections import deque
 
 
-#df = pd.DataFrame({'time': [1], 'temperature': [1]})
-#df2 = pd.DataFrame({'time': [1], 'temperature': [2012]})
-#df2 = pd.DataFrame([["5", "6"]], columns = ['time','temperature'])
-#df = df.append(df2)
-#df.set_index('time', inplace = True)
-#print(df)
-#df.to_csv('aqua.csv', mode='a', header=False)
-
-#X = deque(maxlen=20)
-#X.append(1)
 #MQTT Details
 broker_address="iot.eclipse.org"
 client_id="autobot_sub"
@@ -39,8 +29,6 @@ def on_message(client,userdata,message):
        print("message received",str(message.payload.decode("utf-8")))
        data = json.loads(str(message.payload.decode("utf-8","ignore")))
        print(data)
-       #X.append(X[-1]+1)
-       #df2 = pd.DataFrame([[X[-1], data[1]]])
        df2 = pd.DataFrame([data])
        df2.to_csv('aqua.csv', mode='a', header=False)
        print("message topic=",message.topic)

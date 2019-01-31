@@ -10,12 +10,7 @@ import random
 import plotly.graph_objs as go
 from collections import deque
 
-#with open("aqua.csv", "r") as f:
-#       temp_last_line = f.readlines()[-1].strip().split(",")
-       #temp_secondlast_line = f.readlines()[-2].strip().split(",")
-#X = deque(maxlen=100)
-#X.append(temp_last_line)
-#X.append(temp_last_line)
+
 Y = deque(maxlen=100)
 Y.append("0")
 Y.append("0")
@@ -36,19 +31,14 @@ app.layout = html.Div(
 def update_graph_scatter():
      	with open("aqua.csv", "r") as f:
          	last_line = f.readlines()[-1].strip().split(",")
-#    	if  str(X[-1]) == str(last_line[1]):
-#    	        print("same shit")
-#    	else: 
-#    	    	X.append(last_line[1])
          	Y.append(last_line[2])
 #        	print(X)
-        
-        fig = go.Figure()
+        fig=go.Figure()
 	fig.add_barpolar(r = [1, 1, 1, 1, 1],
-                 theta = [0, 36, 72, 108, 144],
-                 offset=0,
-                 width=36,
-                 marker={'color': [0, 1, 2, 3, 4]})
+                theta = [0, 36, 72, 108, 144],
+                offset=0,
+                width=36,
+                marker={'color': [0, 1, 2, 3, 4]})
 
 # Configure polar 1
 	fig.layout.polar.hole = 0.4
